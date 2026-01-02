@@ -7,6 +7,7 @@ import Sessions from "./Sessions";
 import Feedback from "./Feedback";
 import Register from "./Register";
 import Personnel from "./Personnel";
+import Footer from "./components/Footer";
 
 export default function AiVerse4() {
   return (
@@ -22,6 +23,7 @@ export default function AiVerse4() {
         <section id="feedback"><Feedback /></section>
         <section id="register"><Register /></section>
       </main>
+      <Footer />
     </div>
   );
 }

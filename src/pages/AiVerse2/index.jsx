@@ -7,26 +7,30 @@ import Footer from './components/Footer';
 import Personnel from './Personnel';
 
 // Assets
-import posterImg from './assets/poster.jpg'; 
+import posterImg from './assets/poster.jpg';
+import img1 from './public/img1.png';
+import image2 from './public/image2.png';
+import image3 from './public/image3.png';
+import image4 from './public/image4.png';
+import image5 from './public/image5.png';
+import image6 from './public/image6.png';
+import image7 from './public/image7.png';
 
-// Placeholder Gallery
+// Gallery Images
 const galleryImages = [
-  "https://placehold.co/600x400/0b1121/f58220?text=Workshop+Session+1",
-  "https://placehold.co/600x400/0b1121/f58220?text=Student+Interaction",
-  "https://placehold.co/600x400/0b1121/f58220?text=AI+Lab+Session",
-  "https://placehold.co/600x400/0b1121/f58220?text=Speaker+Presentation",
-  "https://placehold.co/600x400/0b1121/f58220?text=Hands-on+Training",
-  "https://placehold.co/600x400/0b1121/f58220?text=Gen+AI+Demo",
-  "https://placehold.co/600x400/0b1121/f58220?text=Closing+Ceremony",
-  "https://placehold.co/600x400/0b1121/f58220?text=Group+Photo"
+  img1,
+  image2,
+  image3,
+  image4,
+  image5,
+  image6,
+  image7,
 ];
 
 const AiVerse2 = () => {
-  // HOOKS MUST BE INSIDE THE FUNCTION BODY
   const navigate = useNavigate();
   const [showPoster, setShowPoster] = useState(false);
 
-  // Auto-scroll to top when page loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -95,29 +99,66 @@ const AiVerse2 = () => {
         </div>
       </section>
 
-      {/* --- GALLERY SECTION --- */}
-      <section className="section-container pb-12">
+      {/* --- FOUNDATION TEAM --- */}
+      <section className="section-container pb-8">
+        <Personnel />
+      </section>
+
+      {/* --- SCROLLING GALLERY SECTION --- */}
+      <section className="section-container pb-12 overflow-hidden">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Workshop Memories</h2>
           <div className="h-1 w-20 bg-orange-500 mx-auto"></div>
         </div>
 
-        <div className="gallery-grid">
-          {galleryImages.map((image, index) => (
-            <div key={index} className="gallery-item group overflow-hidden rounded-xl bg-gray-900 border border-white/10">
-              <img 
-                src={image} 
-                alt={`AI-VERSE 2.0 Session ${index + 1}`} 
-                className="w-full h-64 object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out cursor-pointer"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+        <div className="relative flex overflow-x-hidden">
+          {/* Custom CSS for the animation integrated into the component */}
+          <style>
+            {`
+              @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-marquee-scroll {
+                display: flex;
+                width: max-content;
+                animation: marquee 35s linear infinite;
+              }
+              .gallery-wrapper:hover .animate-marquee-scroll {
+                animation-play-state: paused;
+              }
+              .mask-edges {
+                mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+                -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+              }
+            `}
+          </style>
 
-      {/* --- FOUNDATION TEAM --- */}
-      <section className="section-container pb-8">
-        <Personnel />
+          <div className="gallery-wrapper mask-edges max-w-7xl mx-auto px-6 md:px-12">
+            <div className="animate-marquee-scroll py-8 flex gap-6">
+              {/* First set of images */}
+              {galleryImages.map((image, index) => (
+                <div key={`set1-${index}`} className="w-72 md:w-96 h-64 flex-shrink-0 group overflow-hidden rounded-xl bg-gray-900 border border-white/10">
+                  <img 
+                    src={image} 
+                    alt={`AI-VERSE 2.0 Session ${index + 1}`} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 ease-in-out cursor-pointer"
+                  />
+                </div>
+              ))}
+              {/* Duplicate set for seamless looping */}
+              {galleryImages.map((image, index) => (
+                <div key={`set2-${index}`} className="w-72 md:w-96 h-64 flex-shrink-0 group overflow-hidden rounded-xl bg-gray-900 border border-white/10">
+                  <img 
+                    src={image} 
+                    alt={`AI-VERSE 2.0 Session Duplicate ${index + 1}`} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 ease-in-out cursor-pointer"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* --- NAVIGATION FOOTER --- */}
@@ -138,9 +179,8 @@ const AiVerse2 = () => {
           </button>
         </div>
       </section>
-     
-     <Footer />
-
+      
+      <Footer />
 
       {/* --- POSTER LIGHTBOX --- */}
       {showPoster && (

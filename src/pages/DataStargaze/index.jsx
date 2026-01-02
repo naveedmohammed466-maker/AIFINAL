@@ -1,5 +1,6 @@
 // src/pages/DataStargaze/index.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import StargazeHero from './Hero';
 import Stats from './Stats';
 import AboutEvent from './AboutEvent'; // NEW
@@ -7,8 +8,11 @@ import Personnel from './Personnel';
 import Agenda from './Agenda';
 import EventCategorization from './EventCategorization'; // NEW
 import Gallery from './Gallery';
+import Footer from './components/Footer';
 
 export default function DataStargaze() {
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen bg-[#020205] text-white overflow-x-hidden selection:bg-[#00F2FE]/30">
       {/* Background Pulse */}
@@ -32,12 +36,26 @@ export default function DataStargaze() {
 
         <Gallery />
 
-        <footer className="py-20 text-center">
-          <div className="w-20 h-1 bg-[#7C5CFF] mx-auto mb-8 rounded-full" />
-          <p className="text-[10px] font-mono text-slate-600 tracking-[0.5em] uppercase">
-            Built for the AI Verse Legacy // 2025
-          </p>
-        </footer>
+        {/* --- NAVIGATION FOOTER --- */}
+        <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+          <div className="flex flex-col md:flex-row gap-6 justify-center items-center border-t border-white/10 pt-16">
+            <button 
+              onClick={() => navigate('/')} 
+              className="px-8 py-3 rounded-full border border-white/20 hover:bg-white/10 transition-all text-sm font-bold tracking-widest uppercase text-white"
+            >
+              ← Home
+            </button>
+            
+            <button 
+              onClick={() => navigate('/ai-verse-4')} 
+              className="px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-700 hover:shadow-[0_0_20px_rgba(245,130,32,0.4)] transition-all text-sm font-bold tracking-widest uppercase text-white"
+            >
+              Explore AI-VERSE 4.0 →
+            </button>
+          </div>
+        </section>
+     
+        <Footer />
       </div>
     </div>
   );
