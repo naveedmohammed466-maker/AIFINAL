@@ -9,7 +9,7 @@ const FeaturedExplorePoster = () => {
       initial={{ opacity: 0, scale: 0.9, y: 40 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative w-full max-w-4xl mx-auto mb-12"
+      className="relative w-full max-w-6xl mx-auto mb-16"
     >
       {/* Animated gradient border container */}
       <div className="relative p-[3px] rounded-3xl bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 animate-gradient-border overflow-hidden">
@@ -56,13 +56,13 @@ const FeaturedExplorePoster = () => {
           </motion.div>
 
           {/* Content section */}
-          <div className="relative z-10 p-6 md:p-8">
+          <div className="relative z-10 p-8 md:p-12">
             {/* Event title */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-3xl md:text-4xl font-black text-white mb-2"
+              className="text-4xl md:text-5xl font-black text-white mb-3"
             >
               AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">VERSE 4.0</span>
             </motion.h2>
@@ -72,7 +72,7 @@ const FeaturedExplorePoster = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-cyan-300 text-lg font-medium mb-4"
+              className="text-cyan-300 text-lg md:text-xl font-medium mb-5"
             >
               WHERE AI MEETS THE POWER OF QUANTUM REALITY
             </motion.p>
@@ -86,7 +86,7 @@ const FeaturedExplorePoster = () => {
             >
               <span className="text-white/80 text-lg">📅</span>
               <motion.span
-                className="text-xl font-bold text-white"
+                className="text-2xl font-bold text-white"
                 animate={{ textShadow: ["0 0 10px #00F2FE", "0 0 20px #8B5CF6", "0 0 10px #00F2FE"] }}
                 transition={{ repeat: Infinity, duration: 2 }}
               >
@@ -106,7 +106,7 @@ const FeaturedExplorePoster = () => {
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 242, 254, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate("/ai-verse-4")}
-                className="px-8 py-4 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-bold text-lg shadow-lg hover:shadow-cyan-400/50 transition-all flex items-center justify-center gap-2"
+                className="px-10 py-5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-bold text-lg shadow-lg hover:shadow-cyan-400/50 transition-all flex items-center justify-center gap-2"
               >
                 <span>Register Now</span>
                 <motion.span
@@ -123,7 +123,7 @@ const FeaturedExplorePoster = () => {
                 whileHover={{ scale: 1.05, borderColor: "#00F2FE" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate("/ai-verse-4")}
-                className="px-8 py-4 rounded-full border-2 border-cyan-400/50 text-cyan-400 font-bold text-lg hover:bg-cyan-400/10 transition-all"
+                className="px-10 py-5 rounded-full border-2 border-cyan-400/50 text-cyan-400 font-bold text-lg hover:bg-cyan-400/10 transition-all"
               >
                 View Event Details
               </motion.button>

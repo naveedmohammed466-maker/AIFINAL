@@ -8,10 +8,13 @@ import Feedback from "./Feedback";
 import Register from "./Register";
 import Personnel from "./Personnel";
 import Footer from "./components/Footer";
+import { FloatingGradientBg } from "../../components/FloatingGradientBg";
 
 export default function AiVerse4() {
   return (
-    <div className="bg-[#0B0B0B] text-white selection:bg-[#7C5CFF] selection:text-black">
+    <div className="relative bg-[#0B0B0B] text-white selection:bg-[#7C5CFF] selection:text-black">
+      <FloatingGradientBg />
+      <div className="relative z-10">
       <Navbar />
       <main>
         <section id="home"><Home /></section>
@@ -24,6 +27,7 @@ export default function AiVerse4() {
         <section id="register"><Register /></section>
       </main>
       <Footer />
+      </div>
     </div>
   );
 }

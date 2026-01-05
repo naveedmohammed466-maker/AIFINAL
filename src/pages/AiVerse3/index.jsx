@@ -6,6 +6,7 @@ import About from './components/EventInfo/About';
 // Replace Schedule with EventStream for the archive look
 import EventStream from './components/Experience/EventStream'; 
 import Personnel from './Personnel';
+import { FloatingGradientBg } from '../../components/FloatingGradientBg';
 
 // Public gallery images for scrolling marquee
 import img1 from './public/img1.jpeg';
@@ -21,10 +22,11 @@ const galleryImages3 = [img1, img2, img3, img4, img5, img6, img7];
 export default function AiVerse3() {
   return (
     <div id="aiv3" className="relative min-h-screen bg-[#0A0B1A]">
+      <FloatingGradientBg />
       {/* Navbar stays fixed at the top */}
       <Navbar />
       
-      <main className="w-full">
+      <main className="w-full relative z-10">
         {/* Hero removed as requested */}
         {/* Institutional & Purpose Details */}
         <About />

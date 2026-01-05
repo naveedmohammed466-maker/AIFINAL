@@ -9,14 +9,16 @@ import Agenda from './Agenda';
 import EventCategorization from './EventCategorization'; // NEW
 import Gallery from './Gallery';
 import Footer from './components/Footer';
+import { FloatingGradientBg } from '../../components/FloatingGradientBg';
 
 export default function DataStargaze() {
   const navigate = useNavigate();
   
   return (
-    <div className="min-h-screen bg-[#020205] text-white overflow-x-hidden selection:bg-[#00F2FE]/30">
+    <div className="min-h-screen bg-[#020205] text-white overflow-x-hidden selection:bg-[#00F2FE]/30 relative">
       {/* Background Pulse */}
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,#1A1A2E_0%,#020205_100%)] z-0" />
+      <FloatingGradientBg />
       
       <div className="relative z-10">
         <StargazeHero />

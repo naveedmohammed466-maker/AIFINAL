@@ -5,6 +5,8 @@ import './AiVerse2.css';
 import { useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import Personnel from './Personnel';
+import ImageSlideshow from '../../components/ImageSlideshow';
+import { FloatingGradientBg } from '../../components/FloatingGradientBg';
 
 // Assets
 import posterImg from './assets/poster.jpg';
@@ -36,7 +38,9 @@ const AiVerse2 = () => {
   }, []);
 
   return (
-    <div className="aiverse2-wrapper">
+    <div className="aiverse2-wrapper relative">
+      <FloatingGradientBg />
+      <div className="relative z-10">
       {/* --- HERO SECTION --- */}
       <section className="hero text-center pt-24 pb-16 px-4">
         <div className="max-w-4xl mx-auto">
@@ -104,62 +108,12 @@ const AiVerse2 = () => {
         <Personnel />
       </section>
 
-      {/* --- SCROLLING GALLERY SECTION --- */}
-      <section className="section-container pb-12 overflow-hidden">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Workshop Memories</h2>
-          <div className="h-1 w-20 bg-orange-500 mx-auto"></div>
-        </div>
-
-        <div className="relative flex overflow-x-hidden">
-          {/* Custom CSS for the animation integrated into the component */}
-          <style>
-            {`
-              @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-              .animate-marquee-scroll {
-                display: flex;
-                width: max-content;
-                animation: marquee 35s linear infinite;
-              }
-              .gallery-wrapper:hover .animate-marquee-scroll {
-                animation-play-state: paused;
-              }
-              .mask-edges {
-                mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-              }
-            `}
-          </style>
-
-          <div className="gallery-wrapper mask-edges max-w-7xl mx-auto px-6 md:px-12">
-            <div className="animate-marquee-scroll py-8 flex gap-6">
-              {/* First set of images */}
-              {galleryImages.map((image, index) => (
-                <div key={`set1-${index}`} className="w-72 md:w-96 h-64 flex-shrink-0 group overflow-hidden rounded-xl bg-gray-900 border border-white/10">
-                  <img 
-                    src={image} 
-                    alt={`AI-VERSE 2.0 Session ${index + 1}`} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 ease-in-out cursor-pointer"
-                  />
-                </div>
-              ))}
-              {/* Duplicate set for seamless looping */}
-              {galleryImages.map((image, index) => (
-                <div key={`set2-${index}`} className="w-72 md:w-96 h-64 flex-shrink-0 group overflow-hidden rounded-xl bg-gray-900 border border-white/10">
-                  <img 
-                    src={image} 
-                    alt={`AI-VERSE 2.0 Session Duplicate ${index + 1}`} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 ease-in-out cursor-pointer"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* --- IMAGE SLIDESHOW GALLERY SECTION --- */}
+      <ImageSlideshow 
+        images={galleryImages} 
+        eventName="AI-VERSE 2.0"
+        title="Workshop Memories"
+      />
 
       {/* --- NAVIGATION FOOTER --- */}
       <section className="section-container pb-24">
@@ -206,6 +160,7 @@ const AiVerse2 = () => {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 };

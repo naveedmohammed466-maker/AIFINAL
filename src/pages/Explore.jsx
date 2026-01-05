@@ -111,12 +111,12 @@ export default function Explore() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
             
             {/* Featured Poster Section */}
-            <div className="lg:w-3/5">
+            <div className="lg:w-full">
               <FeaturedExplorePoster />
             </div>
 
             {/* Events List Section */}
-            <div className="lg:w-2/5">
+            <div className="lg:w-full mt-12">
               <motion.h3
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
